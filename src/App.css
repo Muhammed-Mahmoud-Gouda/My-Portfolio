@@ -1,0 +1,25 @@
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #01072e 0%, #02021e 100%);
+  color: #e2e8f0;
+  overflow-x: hidden;
+  position: relative;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+section {
+  min-height: 100vh;
+  padding: 6rem 2rem 4rem;
+  position: relative;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
