@@ -1,9 +1,10 @@
+import { motion } from "framer-motion";
 import "./Skills.css";
 
 const Skills = () => {
   const skillsData = [
     {
-      category: "Back-End Development",
+      category: "Back-End",
       skills: [
         { name: "C#", icon: "fab fa-microsoft" },
         { name: "OOP", icon: "fas fa-code" },
@@ -16,7 +17,7 @@ const Skills = () => {
       ],
     },
     {
-      category: "Front-End Development",
+      category: "Front-End",
       skills: [
         { name: "HTML5", icon: "fab fa-html5" },
         { name: "CSS3", icon: "fab fa-css3-alt" },
@@ -28,7 +29,7 @@ const Skills = () => {
       ],
     },
     {
-      category: "Tools & Technologies",
+      category: "Tools",
       skills: [
         { name: "Git", icon: "fab fa-git-alt" },
         { name: "Visual Studio", icon: "fas fa-window-maximize" },
@@ -42,60 +43,42 @@ const Skills = () => {
   ];
 
   return (
-    <div className="skills" id="skills">
-      <div className="skills-particles">
-        {Array.from({ length: 50 }).map((_, i) => (
-          <div
-            key={i}
-            className="particle-dot"
-            style={{
-              "--x": `${Math.random() * 100}%`,
-              "--y": `${Math.random() * 100}%`,
-              "--size": `${Math.random() * 3 + 1}px`,
-              "--delay": `${Math.random() * 5}s`,
-              "--duration": `${Math.random() * 6 + 8}s`,
-            }}
-          />
-        ))}
-      </div>
-
+    <section className="skills" id="skills">
       <div className="skills-container">
-        <h1 className="skills-title">
-          My <span className="gradient-text">Skills</span>
-        </h1>
-        <p className="skills-subtitle">
-          Technologies and tools I use to bring ideas to life
-        </p>
-        <div className="skills-divider"></div>
+        <motion.h2
+          className="section-heading"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+        >
+          Skills & Technologies
+        </motion.h2>
 
         <div className="skills-categories">
           {skillsData.map((category, index) => (
-            <div
+            <motion.div
               key={category.category}
               className="skill-category"
-              style={{ animationDelay: `${index * 0.2}s` }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.4, delay: index * 0.15 }}
             >
-              <h2 className="category-title">{category.category}</h2>
-
-              <div className="skills-list">
-                {category.skills.map((skill, skillIndex) => (
-                  <div
-                    key={skill.name}
-                    className="skill-tag"
-                    style={{
-                      animationDelay: `${index * 0.2 + skillIndex * 0.05}s`,
-                    }}
-                  >
-                    <i className={`skill-icon ${skill.icon}`}></i>
+              <h3 className="category-title">{category.category}</h3>
+              <div className="skills-tags">
+                {category.skills.map((skill) => (
+                  <div key={skill.name} className="skill-tag">
+                    <i className={skill.icon}></i>
                     <span>{skill.name}</span>
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

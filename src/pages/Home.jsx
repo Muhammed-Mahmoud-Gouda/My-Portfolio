@@ -1,90 +1,68 @@
+import { motion } from "framer-motion";
 import "./Home.css";
 
 const Home = () => {
   return (
-    <div className="home">
-      <div className="particles-background">
-        {Array.from({ length: 50 }).map((_, i) => (
-          <div
-            key={i}
-            className="particle-dot"
-            style={{
-              "--x": `${Math.random() * 100}%`,
-              "--y": `${Math.random() * 100}%`,
-              "--size": `${Math.random() * 3 + 1}px`,
-              "--delay": `${Math.random() * 25}s`,
-              "--duration": `${Math.random() * 6 + 8}s`,
+    <section className="hero">
+      <div className="hero-content">
+        <motion.p
+          className="hero-greeting"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.6 }}
+        >
+          Hi, my name is
+        </motion.p>
+
+        <motion.h1
+          className="hero-name"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.7 }}
+        >
+          Muhammed Mahmoud.
+        </motion.h1>
+
+        <motion.h2
+          className="hero-tagline"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.8 }}
+        >
+          I build things for the web.
+        </motion.h2>
+
+        <motion.p
+          className="hero-description"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.9 }}
+        >
+          I'm a software engineer specializing in building scalable .NET applications,
+          implementing modern architectural patterns, and delivering high-quality full-stack
+          solutions. Currently focused on building robust APIs and backend systems
+          with <a href="https://dotnet.microsoft.com/" target="_blank" rel="noopener noreferrer">ASP.NET Core</a>.
+        </motion.p>
+
+        <motion.div
+          className="hero-cta"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 1.0 }}
+        >
+          <a
+            href="#projects"
+            className="cta-button"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
             }}
-          />
-        ))}
+          >
+            Check out my work
+          </a>
+        </motion.div>
       </div>
-
-      <div className="hero">
-        <div className="hero-content">
-          <h1 className="hero-greeting">
-            Hi, I'm <span className="gradient-text">Muhammed Mahmoud</span>
-          </h1>
-
-          <h2 className="hero-title">
-            Software Engineer | .NET Developer | Full Stack
-          </h2>
-
-          <p className="hero-description">
-            Passionate developer with expertise in building scalable .NET
-            applications, implementing modern architectural patterns, and
-            delivering high-quality solutions through research-driven
-            problem-solving and continuous learning.
-          </p>
-
-          <div className="hero-buttons">
-            <button
-              className="btn-primary"
-              onClick={() => {
-                const link = document.createElement("a");
-                link.href = "/Muhammed_Mahmoud_CV.pdf";
-                link.download = "Muhammed_Mahmoud_CV.pdf";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              }}
-            >
-              <i className="fas fa-download"></i>
-              View My CV
-            </button>
-
-            <button
-              className="btn-secondary"
-              onClick={() =>
-                document
-                  .getElementById("contact")
-                  .scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              Contact Me
-            </button>
-          </div>
-
-          <div className="social-icons">
-            <a
-              href="https://www.linkedin.com/in/muhammad-mahmoud-gouda"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon"
-            >
-              <i className="fab fa-linkedin"></i>
-            </a>
-            <a
-              href="https://github.com/Muhammed-Mahmoud-Gouda"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon"
-            >
-              <i className="fab fa-github"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
   );
 };
 

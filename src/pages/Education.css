@@ -1,292 +1,123 @@
 .education {
-  position: relative;
-  padding: 8rem 2rem 4rem;
-  background: linear-gradient(135deg, #01072e 0%, #02021e 100%);
-  min-height: 100vh;
-  overflow: hidden;
-}
-
-.education-particles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
-}
-
-.particle-dot {
-  position: absolute;
-  left: var(--x);
-  top: var(--y);
-  width: var(--size);
-  height: var(--size);
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(96, 165, 250, 0.8) 0%,
-    rgba(59, 130, 246, 0.4) 70%
-  );
-  box-shadow: 0 0 10px rgba(96, 165, 250, 0.6);
-  opacity: 0.6;
-  animation: float-particle var(--duration) infinite;
-  animation-delay: var(--delay);
-  will-change: transform;
-}
-
-@keyframes float-particle {
-  0%,
-  100% {
-    transform: translateY(0) translateX(0);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translateY(-20px) translateX(10px);
-    opacity: 0.9;
-  }
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--section-padding);
+  padding-left: clamp(1.5rem, 5vw, 6rem);
+  padding-right: clamp(1.5rem, 5vw, 6rem);
 }
 
 .education-container {
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #e2e8f0;
-  text-align: center;
-  margin-bottom: 4rem;
-  position: relative;
-}
-
-.section-title::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #3b82f6, #60a5fa);
-  border-radius: 2px;
+  width: 100%;
 }
 
 .education-card {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  border-radius: 20px;
-  padding: 3rem;
-  animation: fadeInUp 0.8s ease-out;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2rem;
+  transition: all 0.3s ease;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.education-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
 }
 
 .education-header {
-  display: flex;
-  gap: 2rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-  margin-bottom: 2rem;
-}
-
-.education-icon {
-  width: 80px;
-  height: 80px;
-  min-width: 80px;
-  border-radius: 16px;
-  background: rgba(59, 130, 246, 0.1);
-  border: 2px solid rgba(59, 130, 246, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.5rem;
-  color: #60a5fa;
-  flex-shrink: 0;
-}
-
-.education-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  flex: 1;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
 }
 
 .university-name {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: #e2e8f0;
-  margin: 0;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
 }
 
 .degree {
-  font-size: 1.2rem;
-  color: #60a5fa;
-  font-weight: 600;
-  margin: 0;
+  font-size: 1.05rem;
+  color: var(--accent);
+  font-weight: 500;
+  font-family: var(--font-mono);
+  margin-bottom: 0.75rem;
 }
 
 .education-meta {
   display: flex;
-  gap: 2rem;
-  color: #94a3b8;
-  font-size: 0.95rem;
-  flex-wrap: wrap;
-}
-
-.education-meta i {
-  color: #3b82f6;
-  margin-right: 0.5rem;
-}
-
-.period,
-.location {
-  display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.meta-separator {
+  color: var(--text-tertiary);
 }
 
 .education-description {
-  color: #94a3b8;
-  line-height: 1.9;
-  font-size: 1.05rem;
-  margin-bottom: 2.5rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 1rem;
+  margin-bottom: 2rem;
 }
 
 .courses-section {
-  padding-top: 2rem;
-  border-top: 1px solid rgba(59, 130, 246, 0.2);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
 }
 
 .courses-title {
-  font-size: 1.3rem;
-  color: #60a5fa;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
 }
 
 .courses-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.25rem 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
 }
 
-.course-tag {
-  padding: 0.5rem 1.25rem;
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  border-radius: 20px;
-  color: #cbd5e1;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
+.courses-list li {
+  position: relative;
+  padding-left: 1.25rem;
+  color: var(--text-secondary);
+  line-height: 2;
 }
 
-.course-tag:hover {
-  background: rgba(59, 130, 246, 0.2);
-  border-color: rgba(59, 130, 246, 0.5);
-  color: #60a5fa;
-  transform: translateY(-2px);
+.courses-list li::before {
+  content: "\25B8";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.75rem;
+  line-height: 2.2;
 }
 
 @media (max-width: 768px) {
-  .education {
-    padding: 6rem 1.5rem 3rem;
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
   .education-card {
-    padding: 2rem;
-  }
-
-  .education-header {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .education-icon {
-    width: 70px;
-    height: 70px;
-    min-width: 70px;
-    font-size: 2rem;
+    padding: 1.5rem;
   }
 
   .university-name {
-    font-size: 1.5rem;
-  }
-
-  .degree {
-    font-size: 1.1rem;
-  }
-
-  .education-meta {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .education-description {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 
   .courses-list {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .education {
-    padding: 5rem 1.25rem 3rem;
+    grid-template-columns: 1fr;
   }
 
-  .section-title {
-    font-size: 1.8rem;
-  }
-
-  .education-card {
-    padding: 1.75rem;
-  }
-
-  .education-icon {
-    width: 60px;
-    height: 60px;
-    min-width: 60px;
-    font-size: 1.8rem;
-  }
-
-  .university-name {
-    font-size: 1.3rem;
-  }
-
-  .degree {
-    font-size: 1rem;
-  }
-
-  .education-description {
-    font-size: 0.95rem;
-  }
-
-  .courses-title {
-    font-size: 1.1rem;
-  }
-
-  .course-tag {
-    padding: 0.4rem 1rem;
-    font-size: 0.85rem;
+  .education-meta {
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
 }

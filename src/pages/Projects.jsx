@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import "./Projects.css";
 
 const Projects = () => {
@@ -6,90 +7,106 @@ const Projects = () => {
       id: 1,
       name: "ATM System",
       description:
-        "Developed a fully functional ATM System in C++ using strong OOP principles, featuring secure login (3 attempts limit) and file-based data storage. Implemented core banking operations including Withdraw, Deposit, Balance Check, PIN Change, Transaction History, and Logout with full input validation.",
+        "A fully functional ATM System built with strong OOP principles, featuring secure login with a 3-attempt limit and file-based data storage. Implements core banking operations including Withdraw, Deposit, Balance Check, PIN Change, Transaction History, and Logout with full input validation.",
       link: "https://github.com/Muhammed-Mahmoud-Gouda/ATM-System",
-      technologies: ["C++", "OOP", "File System"],
-      icon: "fas fa-credit-card",
+      technologies: ["C++", "OOP", "File System", "Data Persistence"],
+      image: "/projects/atm-system.jpg",
     },
     {
       id: 2,
       name: "Bank System",
       description:
-        "Developed a fully functional Bank Management System in C++ using OOP principles with secure login (3-attempt limit) and file-based data persistence. Implemented core banking operations including client management, deposit, withdrawal, balance inquiry, and transaction history.",
+        "A comprehensive Bank Management System using OOP principles with secure login and file-based data persistence. Features include complete client management, deposit and withdrawal operations, balance inquiry, and detailed transaction history with robust error handling.",
       link: "https://github.com/Muhammed-Mahmoud-Gouda/Bank-System",
-      technologies: ["C++", "OOP", "File System"],
-      icon: "fas fa-university",
+      technologies: ["C++", "OOP", "File I/O", "CRUD Operations"],
+      image: "/projects/bank-system.jpg",
     },
     {
       id: 3,
       name: "Pizza Palace",
       description:
-        "Built a Pizza Ordering Desktop App using C# and WinForms (.NET Framework) that allows users to customize pizza size, toppings, crust type, and dining option through an interactive UI. The app provides real-time order summary and automatic price calculation.",
+        "A Pizza Ordering Desktop Application using C# and WinForms that allows users to customize pizza size, toppings, crust type, and dining option through an interactive UI. Features real-time order summary and automatic price calculation with a polished user experience.",
       link: "https://github.com/Muhammed-Mahmoud-Gouda/Pizza-Palace",
-      technologies: ["C#", "WinForms", ".NET Framework"],
-      icon: "fas fa-pizza-slice",
+      technologies: ["C#", "WinForms", ".NET Framework", "Desktop App"],
+      image: "/projects/pizza-palace.jpg",
     },
   ];
 
   return (
-    <div className="projects" id="projects">
-      <div className="projects-particles">
-        {Array.from({ length: 50 }).map((_, i) => (
-          <div
-            key={i}
-            className="particle-dot"
-            style={{
-              "--x": `${Math.random() * 100}%`,
-              "--y": `${Math.random() * 100}%`,
-              "--size": `${Math.random() * 3 + 1}px`,
-              "--delay": `${Math.random() * 5}s`,
-              "--duration": `${Math.random() * 6 + 8}s`,
-            }}
-          />
-        ))}
-      </div>
-
+    <section className="projects" id="projects">
       <div className="projects-container">
-        <h1 className="section-title">My Projects</h1>
+        <motion.h2
+          className="section-heading"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+        >
+          Some Things I{"'"}ve Built
+        </motion.h2>
 
-        <div className="projects-grid">
+        <div className="featured-projects">
           {projects.map((project, index) => (
-            <div
+            <motion.div
               key={project.id}
-              className="project-card"
-              style={{ animationDelay: `${index * 0.2}s` }}
+              className={`featured-project ${index % 2 !== 0 ? "reverse" : ""}`}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <div className="project-header">
-                <div className="project-icon">
-                  <i className={project.icon}></i>
+              <div className="project-image">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-image-link"
+                >
+                  <div className="project-image-overlay"></div>
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+
+              <div className="project-content">
+                <p className="project-overline">Featured Project</p>
+                <h3 className="project-title">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {project.name}
+                  </a>
+                </h3>
+                <div className="project-description-card">
+                  <p>{project.description}</p>
                 </div>
-                <h3 className="project-name">{project.name}</h3>
+                <ul className="project-tech-list">
+                  {project.technologies.map((tech) => (
+                    <li key={tech}>{tech}</li>
+                  ))}
+                </ul>
+                <div className="project-links">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-link-icon"
+                    aria-label={`View ${project.name} on GitHub`}
+                  >
+                    <i className="fab fa-github"></i>
+                  </a>
+                </div>
               </div>
-
-              <p className="project-description">{project.description}</p>
-
-              <div className="project-tech">
-                {project.technologies.map((tech, i) => (
-                  <span key={i} className="tech-tag">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-link"
-              >
-                <i className="fab fa-github"></i>
-                View on GitHub
-              </a>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

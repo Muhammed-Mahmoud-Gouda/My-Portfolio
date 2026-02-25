@@ -1,11 +1,12 @@
+import { motion } from "framer-motion";
 import "./Experience.css";
 
 const Experience = () => {
   const program = {
-    title: "Software Development - Full Stack .NET Web Developer",
+    title: "Full Stack .NET Web Developer",
     provider: "DEPI Program",
     description:
-      "Rooted in .NET technologies, this profile reflects a solid foundation for data-driven applications. With a strong grasp of C#, the candidate is equipped with robust back-end development. Front-end proficiency is ensured through HTML5, JavaScript, and CSS3, creating a full-stack capability.",
+      "Completed an intensive software development program rooted in .NET technologies, building a solid foundation for data-driven applications. Gained strong back-end development skills with C# and full-stack capability through HTML5, JavaScript, and CSS3.",
     courses: [
       "Prompt Engineering",
       "Introduction to SQL Server Programming",
@@ -21,61 +22,47 @@ const Experience = () => {
   };
 
   return (
-    <div className="experience" id="experience">
-      <div className="experience-particles">
-        {Array.from({ length: 50 }).map((_, i) => (
-          <div
-            key={i}
-            className="particle-dot"
-            style={{
-              "--x": `${Math.random() * 100}%`,
-              "--y": `${Math.random() * 100}%`,
-              "--size": `${Math.random() * 3 + 1}px`,
-              "--delay": `${Math.random() * 5}s`,
-              "--duration": `${Math.random() * 6 + 8}s`,
-            }}
-          />
-        ))}
-      </div>
-
+    <section className="experience" id="experience">
       <div className="experience-container">
-        <h1 className="section-title">Experience</h1>
+        <motion.h2
+          className="section-heading"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+        >
+          Experience
+        </motion.h2>
 
-        <div className="program-card">
-          <div className="program-header">
-            <div className="program-icon">
-              <i className="fas fa-laptop-code"></i>
-            </div>
-            <div className="program-info">
-              <h2 className="program-title">{program.title}</h2>
-              <div className="program-provider">
-                <i className="fas fa-certificate"></i>
-                {program.provider}
-              </div>
+        <motion.div
+          className="experience-card"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <div className="experience-header">
+            <div className="experience-info">
+              <h3 className="experience-title">
+                {program.title}
+                <span className="experience-at"> @ {program.provider}</span>
+              </h3>
             </div>
           </div>
 
-          <div className="program-description">
-            <p>{program.description}</p>
-          </div>
+          <p className="experience-description">{program.description}</p>
 
-          <div className="courses-section">
-            <div className="courses-header">
-              <i className="fas fa-book-open"></i>
-              <h3>Courses</h3>
-            </div>
-            <div className="courses-list">
+          <div className="modules-section">
+            <h4 className="modules-title">Completed Modules</h4>
+            <ul className="modules-list">
               {program.courses.map((course, index) => (
-                <div key={index} className="course-item">
-                  <div className="course-number">{index + 1}</div>
-                  <div className="course-name">{course}</div>
-                </div>
+                <li key={index}>{course}</li>
               ))}
-            </div>
+            </ul>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

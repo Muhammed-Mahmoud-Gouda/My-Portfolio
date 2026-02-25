@@ -1,10 +1,11 @@
+import { motion } from "framer-motion";
 import "./Education.css";
 
 const Education = () => {
   const education = {
     university: "Zagazig University",
     degree: "Bachelor's Degree in Computer Science",
-    period: "Sep 2023 – Present",
+    period: "Sep 2023 - Present",
     location: "Zagazig, Egypt",
     description:
       "Currently pursuing my Bachelor's degree in Computer Science, focusing on software engineering, algorithms, data structures, and modern development practices. Building a strong foundation in both theoretical concepts and practical applications.",
@@ -19,43 +20,33 @@ const Education = () => {
   };
 
   return (
-    <div className="education" id="education">
-      <div className="education-particles">
-        {Array.from({ length: 50 }).map((_, i) => (
-          <div
-            key={i}
-            className="particle-dot"
-            style={{
-              "--x": `${Math.random() * 100}%`,
-              "--y": `${Math.random() * 100}%`,
-              "--size": `${Math.random() * 3 + 1}px`,
-              "--delay": `${Math.random() * 5}s`,
-              "--duration": `${Math.random() * 6 + 8}s`,
-            }}
-          />
-        ))}
-      </div>
-
+    <section className="education" id="education">
       <div className="education-container">
-        <h1 className="section-title">Education</h1>
+        <motion.h2
+          className="section-heading"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+        >
+          Education
+        </motion.h2>
 
-        <div className="education-card">
+        <motion.div
+          className="education-card"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
           <div className="education-header">
-            <div className="education-icon">
-              <i className="fas fa-graduation-cap"></i>
-            </div>
             <div className="education-info">
-              <h2 className="university-name">{education.university}</h2>
+              <h3 className="university-name">{education.university}</h3>
               <p className="degree">{education.degree}</p>
               <div className="education-meta">
-                <span className="period">
-                  <i className="fas fa-calendar-alt"></i>
-                  {education.period}
-                </span>
-                <span className="location">
-                  <i className="fas fa-map-marker-alt"></i>
-                  {education.location}
-                </span>
+                <span className="period">{education.period}</span>
+                <span className="meta-separator">|</span>
+                <span className="location">{education.location}</span>
               </div>
             </div>
           </div>
@@ -63,18 +54,16 @@ const Education = () => {
           <p className="education-description">{education.description}</p>
 
           <div className="courses-section">
-            <h3 className="courses-title">Relevant Coursework</h3>
-            <div className="courses-list">
+            <h4 className="courses-title">Relevant Coursework</h4>
+            <ul className="courses-list">
               {education.relevantCourses.map((course, index) => (
-                <span key={index} className="course-tag">
-                  {course}
-                </span>
+                <li key={index}>{course}</li>
               ))}
-            </div>
+            </ul>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

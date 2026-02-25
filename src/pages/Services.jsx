@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import "./Services.css";
 
 const Services = () => {
@@ -6,7 +7,7 @@ const Services = () => {
       icon: "fas fa-code",
       title: "Web Development",
       description:
-        "Building scalable and modern web applications using .NET Core, ASP.NET, and modern frontend technologies like React and Angular.",
+        "Building scalable and modern web applications using .NET Core, ASP.NET, and modern frontend technologies like React.",
     },
     {
       icon: "fas fa-server",
@@ -18,13 +19,13 @@ const Services = () => {
       icon: "fas fa-database",
       title: "Database Design",
       description:
-        "Creating efficient database schemas, optimizing queries, and implementing best practices for data management with SQL Server and Entity Framework.",
+        "Creating efficient database schemas, optimizing queries, and implementing best practices with SQL Server and Entity Framework.",
     },
     {
       icon: "fas fa-mobile-alt",
       title: "Full Stack Solutions",
       description:
-        "End-to-end development services from database design to frontend implementation, ensuring seamless integration and optimal performance.",
+        "End-to-end development from database design to frontend implementation, ensuring seamless integration and optimal performance.",
     },
     {
       icon: "fas fa-shield-alt",
@@ -41,46 +42,38 @@ const Services = () => {
   ];
 
   return (
-    <div className="services" id="services">
-      <div className="services-particles">
-        {Array.from({ length: 50 }).map((_, i) => (
-          <div
-            key={i}
-            className="particle-dot"
-            style={{
-              "--x": `${Math.random() * 100}%`,
-              "--y": `${Math.random() * 100}%`,
-              "--size": `${Math.random() * 3 + 1}px`,
-              "--delay": `${Math.random() * 5}s`,
-              "--duration": `${Math.random() * 6 + 8}s`,
-            }}
-          />
-        ))}
-      </div>
-
+    <section className="services" id="services">
       <div className="services-container">
-        <h1 className="section-title">My Services</h1>
-        <p className="section-subtitle">
-          Professional solutions tailored to meet your business needs
-        </p>
+        <motion.h2
+          className="section-heading"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+        >
+          What I Do
+        </motion.h2>
 
         <div className="services-grid">
           {services.map((service, index) => (
-            <div
-              key={index}
+            <motion.div
+              key={service.title}
               className="service-card"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
             >
               <div className="service-icon">
                 <i className={service.icon}></i>
               </div>
               <h3 className="service-title">{service.title}</h3>
               <p className="service-description">{service.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
